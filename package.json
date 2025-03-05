@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "docker:build": "sudo docker compose build",
+    "docker:build": "sudo docker compose build --build-arg ENV=prod",
     "docker:down": "sudo docker compose down",
     "docker:up": "sudo docker compose down && sudo docker compose up -d"
   },

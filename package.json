@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "docker:build": "docker compose build",
-    "docker:down": "docker compose down",
-    "docker:up": "docker compose down && docker-compose up -d"
+    "docker:build": "sudo docker compose build",
+    "docker:down": "sudo docker compose down",
+    "docker:up": "sudo docker compose down && sudo docker compose up -d"
   },
   "keywords": [],
   "author": "",

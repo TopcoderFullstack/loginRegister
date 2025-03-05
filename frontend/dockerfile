@@ -23,7 +23,7 @@ RUN pnpm build
 RUN npm install -g serve
 
 # 暴露端口
-EXPOSE 3000
+EXPOSE 9191
 
 # 启动服务
-CMD ["serve", "-s", "dist", "-l", "3000"]
+CMD ["serve", "-s", "dist", "-l", "9191"]

@@ -5,7 +5,9 @@ import * as animation from "./src/animation.js"
 
 import axios from "axios"
 
-const backendPath = import.meta.env.VITE_BACKEND_PATH
+const backendPath = import.meta.env.DEV 
+  ? import.meta.env.VITE_BACKEND_PATH 
+  : window.location.origin.replace(/:\d+$/, ':9090');
 const loginToken = import.meta.env.VITE_LOGIN_TOKEN
 
 // here btn function

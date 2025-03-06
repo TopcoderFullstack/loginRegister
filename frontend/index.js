@@ -2,11 +2,15 @@ import "./index.scss"
 import * as dom from "./src/dom.js"
 import { clearDomValue, isInputHasContent } from "./src/utils.js"
 import * as animation from "./src/animation.js"
+import { VideoLoader } from "./src/videoControler.js"
 
 import axios from "axios"
 
 const backendPath = import.meta.env.VITE_BACKEND_PATH
 const loginToken = import.meta.env.VITE_LOGIN_TOKEN
+
+const videosrc = "http://s3-service-9oayex-2c49f7-151-106-113-14.traefik.me:9000/test/General%20Talking.mp4"
+const videoLoader = new VideoLoader()
 
 // here btn function
 const RegisterToLoginBtnFun = (event) => {
@@ -30,7 +34,7 @@ dom.signOutBtn.addEventListener('click', signOut)
 
 async function login(event) {
   event.preventDefault()
-
+  videoLoader.cancelLoad()
   if (isInputHasContent([dom.username, dom.password]) === 1) {
     animation.showError()
     return;
@@ -50,6 +54,7 @@ async function login(event) {
       animation.showCorrect()
       animation.LoginToWelcome()
       response.token && localStorage.setItem(loginToken, response.token)
+      videoLoader.loadVideo(videosrc)
     }
   } catch (error) {
     const code = error?.response?.data?.code
@@ -67,7 +72,7 @@ async function login(event) {
 
 async function register(event) {
   event.preventDefault()
-
+  videoLoader.cancelLoad()
   const statusCode = isInputHasContent([
     dom.new_username,
     dom.password_one,
@@ -126,6 +131,7 @@ async function signOut(event) {
   ])
   animation.WelcomeToLogin()
   localStorage.removeItem(loginToken)
+  videoLoader.cancelLoad()
 }
 
 async function checkToken() {
@@ -151,6 +157,8 @@ async function checkToken() {
       dom.welcomeUsername.innerText = response.username
       animation.LoginToWelcome()
       response.token && localStorage.setItem(loginToken, response.token)
+      videoLoader.loadVideo(videosrc)
+
     }
   } catch (error) {
     localStorage.removeItem(loginToken)
@@ -158,3 +166,5 @@ async function checkToken() {
 }
 
 checkToken()
+
+videoLoader.loadVideo(videosrc)

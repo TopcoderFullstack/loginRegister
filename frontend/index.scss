@@ -155,7 +155,20 @@ input.error {
 .welcome {
   display: none;
   flex-direction: column;
-  font-size: 6rem;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+
+  video {
+    width: 80%;
+    aspect-ratio: 16/9;
+    border-radius: 1rem;
+    box-shadow: 10px 10px 20px var(--primary-color);
+  }
+
+  span {
+    font-size: 3rem;
+  }
 
   * {
     font-size: inherit;

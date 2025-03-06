@@ -34,7 +34,7 @@ dom.signOutBtn.addEventListener('click', signOut)
 
 async function login(event) {
   event.preventDefault()
-  videoLoader.cancelLoad()
+  // videoLoader.cancelLoad()
   if (isInputHasContent([dom.username, dom.password]) === 1) {
     animation.showError()
     return;
@@ -72,7 +72,7 @@ async function login(event) {
 
 async function register(event) {
   event.preventDefault()
-  videoLoader.cancelLoad()
+  // videoLoader.cancelLoad()
   const statusCode = isInputHasContent([
     dom.new_username,
     dom.password_one,

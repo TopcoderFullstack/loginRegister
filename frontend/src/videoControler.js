@@ -22,6 +22,7 @@ export class VideoLoader {
       signal: this.controller.signal
     })
       .then(response => {
+        console.log('视频加载成功');
         const videoBlob = response.data;
         const videoUrl = URL.createObjectURL(videoBlob);
         this.videoElement.src = videoUrl;
